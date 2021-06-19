@@ -1,0 +1,115 @@
+html,
+body {
+  background-color: azure;
+}
+
+/* Navbar */
+.navbar {
+  background-image: linear-gradient(to bottom right, cadetblue, azure);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+}
+
+/* Search Bar */
+.btn-search {
+  background-color: cadetblue;
+  border-color: aliceblue;
+  color: white;
+}
+.btn-search:hover {
+  color: white;
+}
+
+/*card */
+.card {
+  background-color: transparent;
+}
+
+/* user-card btn */
+.btn-show-user {
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+}
+.btn-show-user:hover {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  transition: box-shadow 0.1s ease-in-out;
+}
+.card-img-top {
+  border-top-right-radius: 25px;
+}
+.btn-male {
+  background-color: powderblue;
+  border-color: skyblue;
+}
+.btn-female {
+  background-color: pink;
+  border-color: lightpink;
+}
+
+/* user-card btn-action*/
+.card-action {
+  height: 35px;
+}
+.btn-action {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.btn-action:hover {
+  font-size: 1.6em;
+  transition: font-size 0.1s ease-in-out;
+}
+.btn-action-favorite {
+  color: palevioletred;
+}
+.btn-action-favorite:hover {
+  color: rgb(204, 66, 112);
+}
+.btn-action-favorite-fill {
+  color: red;
+}
+.mailto-link {
+  text-decoration: none; /* 沒有底線 */
+}
+.mailto-link:hover {
+  text-decoration: none; /* 沒有底線 */
+}
+.btn-action-mailto {
+  color: slategrey;
+}
+.btn-action-mailto:hover {
+  color: black;
+}
+
+/* paginator */
+.page-link {
+  background-color: cadetblue;
+  color: white;
+}
+.page-link:hover {
+  background-color: rgb(132, 190, 192);
+  color: white;
+}
+
+/* User Modal  */
+#user-modal .modal-dialog .modal-content {
+  background-color: transparent;
+}
+.content-male {
+  background-image: linear-gradient(to bottom right, powderblue, pink);
+  border-color: skyblue;
+}
+.content-female {
+  background-image: linear-gradient(to bottom right, pink, powderblue);
+  border-color: lightpink;
+}
+
+/* change focus color */
+.btn.focus,
+.btn:focus,
+.page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgb(96 157 159 / 50%);
+}
+.form-control:focus {
+  border-color: cadetblue;
+  box-shadow: 0 0 0 0.2rem rgb(96 157 159 / 50%);
+}
