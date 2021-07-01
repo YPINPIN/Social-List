@@ -1,8 +1,8 @@
-const BASE_URL = "https://lighthouse-user-api.herokuapp.com"
-const INDEX_URL = "/api/v1/users/"
-const dataPanel = document.querySelector("#data-panel")
-const searchForm = document.querySelector("#search-form")
-const searchInput = document.querySelector("#search-input")
+const BASE_URL = 'https://lighthouse-user-api.herokuapp.com'
+const INDEX_URL = '/api/v1/users/'
+const dataPanel = document.querySelector('#data-panel')
+const searchForm = document.querySelector('#search-form')
+const searchInput = document.querySelector('#search-input')
 // 關鍵字搜尋的列表
 let filteredUsers = []
 // 一頁顯示的數量
@@ -12,24 +12,24 @@ let currentPage = 1
 // user data
 const users = []
 // 收藏 data
-const favoriteList = JSON.parse(localStorage.getItem("favoriteUser")) || []
+const favoriteList = JSON.parse(localStorage.getItem('favoriteUser')) || []
 
 // User Modal
-const userModal = document.querySelector("#user-modal")
+const userModal = document.querySelector('#user-modal')
 const modalContent = document.querySelector(
-  "#user-modal .modal-dialog .modal-content"
+  '#user-modal .modal-dialog .modal-content'
 )
 
 // 列表顯示
 function renderSocialList(data) {
-  let rawHTML = ""
+  let rawHTML = ''
   data.forEach((user) => {
-    const btnType = user.gender === "male" ? "btn-male" : "btn-female"
+    const btnType = user.gender === 'male' ? 'btn-male' : 'btn-female'
     const bIsFavorite = favoriteList.some((item) => item.id === user.id)
     const btnFavorite = bIsFavorite
-      ? "btn-action-favorite-fill"
-      : "btn-action-favorite"
-    const iconHeart = bIsFavorite ? "bi-heart-fill" : "bi-heart"
+      ? 'btn-action-favorite-fill'
+      : 'btn-action-favorite'
+    const iconHeart = bIsFavorite ? 'bi-heart-fill' : 'bi-heart'
     rawHTML += `
       <div class="col-12 col-sm-6 col-md-4 col-lg-2 my-2 user-block">
         <div class="card border-0 p-0">
@@ -72,7 +72,7 @@ function renderPaginator(amount) {
   //計算總頁數
   const numberOfPages = Math.ceil(amount / USER_PER_PAGE)
   //製作 template
-  let rawHTML = ""
+  let rawHTML = ''
 
   for (let page = 1; page <= numberOfPages; page++) {
     rawHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`
@@ -93,13 +93,13 @@ function getUsersByPage(page) {
 // User點擊
 function onPanelClicked(event) {
   if (
-    event.target.matches(".btn-show-user") ||
-    event.target.matches(".card-img-top")
+    event.target.matches('.btn-show-user') ||
+    event.target.matches('.card-img-top')
   ) {
     showUserInfo(Number(event.target.dataset.id))
   } else if (
-    event.target.matches(".btn-action-favorite") ||
-    event.target.matches(".btn-action-favorite-fill")
+    event.target.matches('.btn-action-favorite') ||
+    event.target.matches('.btn-action-favorite-fill')
   ) {
     btnFavoriteClicked(event.target, Number(event.target.dataset.id))
   }
@@ -134,15 +134,15 @@ function renderLoadingSpin(target) {
 function renderUserModalInfo(data) {
   const bIsFavorite = favoriteList.some((item) => item.id === data.id)
   const btnFavorite = bIsFavorite
-    ? "btn-action-favorite-fill"
-    : "btn-action-favorite"
-  const iconHeart = bIsFavorite ? "bi-heart-fill" : "bi-heart"
-  if (data.gender === "male") {
-    modalContent.classList.add("content-male")
-    modalContent.classList.remove("content-female")
+    ? 'btn-action-favorite-fill'
+    : 'btn-action-favorite'
+  const iconHeart = bIsFavorite ? 'bi-heart-fill' : 'bi-heart'
+  if (data.gender === 'male') {
+    modalContent.classList.add('content-male')
+    modalContent.classList.remove('content-female')
   } else {
-    modalContent.classList.add("content-female")
-    modalContent.classList.remove("content-male")
+    modalContent.classList.add('content-female')
+    modalContent.classList.remove('content-male')
   }
 
   modalContent.innerHTML = `
@@ -225,11 +225,11 @@ function btnFavoriteClicked(target, id) {
     favoriteList.splice(userIndex, 1)
     bIsAdd = false
   }
-  localStorage.setItem("favoriteUser", JSON.stringify(favoriteList))
-  target.classList.toggle("btn-action-favorite", !bIsAdd)
-  target.classList.toggle("btn-action-favorite-fill", bIsAdd)
-  target.classList.toggle("bi-heart", !bIsAdd)
-  target.classList.toggle("bi-heart-fill", bIsAdd)
+  localStorage.setItem('favoriteUser', JSON.stringify(favoriteList))
+  target.classList.toggle('btn-action-favorite', !bIsAdd)
+  target.classList.toggle('btn-action-favorite-fill', bIsAdd)
+  target.classList.toggle('bi-heart', !bIsAdd)
+  target.classList.toggle('bi-heart-fill', bIsAdd)
 }
 
 function onSearchFormSubmitted(event) {
@@ -243,7 +243,7 @@ function onSearchFormSubmitted(event) {
   )
   //錯誤處理：無符合條件的結果
   if (filteredUsers.length === 0) {
-    searchInput.value = ""
+    searchInput.value = ''
     return alert(`您輸入的關鍵字：${keyword} 沒有符合的對象`)
   }
   renderPaginator(filteredUsers.length)
@@ -253,7 +253,7 @@ function onSearchFormSubmitted(event) {
 
 function onPaginatorClicked(event) {
   //如果被點擊的不是 a 標籤，結束
-  if (event.target.tagName !== "A") return
+  if (event.target.tagName !== 'A') return
 
   //透過 dataset 取得被點擊的頁數
   currentPage = Number(event.target.dataset.page)
@@ -263,8 +263,8 @@ function onPaginatorClicked(event) {
 
 function onUserModalClicked(event) {
   if (
-    event.target.matches(".btn-action-favorite") ||
-    event.target.matches(".btn-action-favorite-fill")
+    event.target.matches('.btn-action-favorite') ||
+    event.target.matches('.btn-action-favorite-fill')
   ) {
     btnFavoriteClicked(event.target, Number(event.target.dataset.id))
     renderSocialList(getUsersByPage(currentPage))
@@ -272,10 +272,10 @@ function onUserModalClicked(event) {
 }
 
 // 監聽
-dataPanel.addEventListener("click", onPanelClicked)
-searchForm.addEventListener("submit", onSearchFormSubmitted)
-paginator.addEventListener("click", onPaginatorClicked)
-userModal.addEventListener("click", onUserModalClicked)
+dataPanel.addEventListener('click', onPanelClicked)
+searchForm.addEventListener('submit', onSearchFormSubmitted)
+paginator.addEventListener('click', onPaginatorClicked)
+userModal.addEventListener('click', onUserModalClicked)
 
 renderLoadingSpin(dataPanel)
 // 取得User列表資料
