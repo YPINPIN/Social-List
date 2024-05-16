@@ -1,4 +1,4 @@
-const BASE_URL = 'https://lighthouse-user-api.herokuapp.com'
+const BASE_URL = 'https://user-list.alphacamp.io'
 const INDEX_URL = '/api/v1/users/'
 const dataPanel = document.querySelector('#data-panel')
 const searchForm = document.querySelector('#search-form')
